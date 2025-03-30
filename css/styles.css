@@ -368,6 +368,7 @@ address a:hover {
   display: inline-block;
   width: 64px;
   height: 64px;
+  fill: currentColor;
 }
 
 /* team */
