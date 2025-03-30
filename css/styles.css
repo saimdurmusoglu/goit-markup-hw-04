@@ -368,6 +368,8 @@ address a:hover {
   display: inline-block;
   width: 64px;
   height: 64px;
+  stroke-width: 0;
+  stroke: currentColor;
   fill: currentColor;
 }
 
