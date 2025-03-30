@@ -352,8 +352,8 @@ address a:hover {
   color: var(--slate);
 }
 
-.services .icon-container {
-  display: flex;
+.services ul li .icon-container {
+  display: inline-flex;
   justify-content: center;
   align-items: center;
   width: 264px;
@@ -364,11 +364,10 @@ address a:hover {
   margin-bottom: 8px;
 }
 
-.services .icon {
+.services ul li .icon-container .icon {
   display: inline-block;
   width: 64px;
   height: 64px;
-  fill: var(--navy-blue);
 }
 
 /* team */
