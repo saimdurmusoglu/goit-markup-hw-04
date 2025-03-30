@@ -277,17 +277,49 @@ address a:hover {
   position: relative;
   left: 0;
   top: 0;
+  width: 100%;
   height: 600px;
   background-color: var(--navy-blue);
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-image: url(../images/people-office.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  z-index: 99;
+}
+
+.hero::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-width: 1440px;
+  height: 600px;
+  content: " ";
+  background-color: var(--grey);
+  background-position: center;
+  opacity: .70;
+  z-index: 100;
 }
 
 .hero h1 {
-  padding: 0;
+  position: relative;
+  display: block;
+  margin: 0 auto;
+  padding: 0; 
   margin-bottom: 40px;
   color: var(--white);
+  z-index: 200;
+}
+
+.hero button {
+  position: relative;
+  display: block;
+  z-index: 200;
+  margin: 0 auto;
 }
 
 /* services */
@@ -318,6 +350,25 @@ address a:hover {
 
 .services li p {
   color: var(--slate);
+}
+
+.services .icon-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 264px;
+  height: 112px;
+  background-color: var(--cloud);
+  border: 1px solid var(--light-slate);
+  border-radius: 4px;
+  margin-bottom: 8px;
+}
+
+.services .icon {
+  display: inline-block;
+  width: 64px;
+  height: 64px;
+  fill: var(--navy-blue);
 }
 
 /* team */
