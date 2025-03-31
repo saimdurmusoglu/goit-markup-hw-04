@@ -170,15 +170,19 @@ main {
 
 /* header properties */
 .page-header {
+  position: sticky;
+  top: 0;
   width: 100%;
   min-width: 1440px;
   height: 72px;
-  /* margin-bottom: 0px; */
+  margin-bottom: 0px;
   background-color: var(--white);
   border-bottom: 1px solid var(--cornflower);
+  box-shadow: 0 2px 5px var(--slate);
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 1000;
 }
 
 .page-header .container {
@@ -281,36 +285,48 @@ address a:hover {
 }
 
 /* hero */
-.hero {
-  position: relative;
-  left: 0;
+.hero::before {
+  position: absolute;
   top: 0;
+  left: auto;
   width: 100%;
+  max-width: 1440px;
   height: 600px;
-  background-color: var(--navy-blue);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  content: "";
   background-image: url(../images/people-office.jpg);
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  z-index: 99;
+  z-index: 200;
 }
 
-.hero::before {
+.hero {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  height: 600px;
+  margin: 0 auto;
+  z-index: 100;
+  background-color: var(--navy-blue);
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero::after {
   position: absolute;
   top: 0;
-  left: 0;
+  left: auto;
   width: 100%;
-  min-width: 1440px;
+  max-width: 1440px;
   height: 600px;
-  content: " ";
+  content: "";
   background-color: var(--grey);
   background-position: center;
   opacity: 0.7;
-  z-index: 100;
+  z-index: 300;
 }
 
 .hero h1 {
@@ -320,13 +336,13 @@ address a:hover {
   padding: 0;
   margin-bottom: 40px;
   color: var(--white);
-  z-index: 200;
+  z-index: 400;
 }
 
 .hero button {
   position: relative;
   display: block;
-  z-index: 200;
+  z-index: 400;
   margin: 0 auto;
 }
 
@@ -431,7 +447,7 @@ address a:hover {
   width: 232px;
   height: auto;
   min-height: 56px;
-  margin: 32px 16px;
+  margin: 32px 16px 8px;
   padding: 0;
 }
 
@@ -439,8 +455,7 @@ address a:hover {
   color: var(--navy-blue);
   width: auto;
   min-width: 134px;
-  height: auto;
-  min-height: 24px;
+  height: 24px;
   margin-bottom: 8px;
 }
 
@@ -448,8 +463,53 @@ address a:hover {
   color: var(--slate);
   width: auto;
   min-width: 128px;
-  height: auto;
-  min-height: 24px;
+  height: 24px;
+}
+
+.team .social-links {
+  display: flex;
+  gap: 4px;
+  flex-shrink: 0;
+  align-self: flex-end;
+  height: 50px;
+  margin: 0;
+  padding: 0 16px;
+  margin-bottom: 32px;
+}
+
+.team .social-links li {
+  display: inline-flex;
+  justify-content: center;
+  align-items: flex-start;
+  border: 0;
+  box-shadow: none;
+}
+
+.team .social-links li .icon-link {
+  font-size: 12px;
+  line-height: 1.333;
+  letter-spacing: 0.48px;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  background-color: var(--iris);
+  border-radius: 50%;
+}
+
+.team .social-links li .icon-link:hover {
+  background-color: var(--ocean);
+}
+
+.team .social-links li .icon-link .icon {
+  display: inline-block;
+  justify-content: center;
+  align-items: center;
+  width: 16px;
+  height: 16px;
+  color: var(--cloud);
 }
 
 /* portfolio */
@@ -487,6 +547,12 @@ address a:hover {
   max-width: calc(33.333%-10px);
   text-align: center;
   overflow: hidden;
+  box-shadow: 0px 1px 6px rgba(40, 101, 42, 0.08);
+}
+
+.portfolio .card:hover {
+  box-shadow: 0px 1px 6px rgba(40, 101, 42, 0.08),
+    0px 1px 1px rgba(40, 101, 42, 0.16), 0px 1px 1px rgba(40, 101, 42, 0.08);
 }
 
 .portfolio .card .img-box {
@@ -523,12 +589,13 @@ address a:hover {
   padding: 40px 32px;
 }
 
-.portfolio .card .img-box:hover > .hover-box {
+.portfolio .card:hover > .img-box .hover-box {
   top: 0;
   display: block;
 }
 
 .portfolio .card .content {
+  height: 120px;
   padding: 32px 16px;
   border-left: 1px solid var(--cornflower);
   border-right: 1px solid var(--cornflower);
@@ -542,6 +609,12 @@ address a:hover {
 }
 
 .portfolio .card .content p {
+  width: 296px;
+  height: 96px;
+  font-size: 16px;
+  font-weight: var(--regular);
+  line-height: 1.5;
+  letter-spacing: 0.32px;
   color: var(--slate);
 }
 
@@ -553,14 +626,24 @@ address a:hover {
   height: 312px;
   padding: 100px auto;
   background-color: var(--navy-blue);
-  display: flex;
-  justify-content: center;
-  align-items: center;
   margin-bottom: 0;
   text-align: left;
+  display: flex;
+}
+
+.page-footer .container {
+  display: flex;
+  gap: 120px;
+  flex-direction: row;
+  justify-content: start;
+  align-items: start;
+  padding-top: 100px;
 }
 
 .page-footer .ft-logo {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
   width: 264px;
   height: 112px;
 }
@@ -588,4 +671,58 @@ address a:hover {
   height: 72px;
   color: var(--cloud);
   margin-top: 16px;
+}
+
+.page-footer .social {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 208px;
+  height: 80px;
+  color: var(--cloud);
+  justify-content: start;
+  align-items: start;
+}
+
+.page-footer .social .social-links {
+  display: flex;
+  gap: 16px;
+  flex-shrink: 0;
+  align-self: flex-start;
+  height: 50px;
+}
+
+.page-footer .social .social-links li {
+  display: inline-flex;
+  justify-content: center;
+  align-items: flex-start;
+  border: 0;
+  box-shadow: none;
+}
+
+.page-footer .social .social-links li .icon-link {
+  font-size: 12px;
+  line-height: 1.333;
+  letter-spacing: 0.48px;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  background-color: var(--iris);
+  border-radius: 50%;
+}
+
+.page-footer .social .social-links li .icon-link:hover {
+  background-color: var(--green);
+}
+
+.page-footer .social .social-links li .icon-link .icon {
+  display: inline-block;
+  justify-content: center;
+  align-items: center;
+  width: 24px;
+  height: 24px;
+  color: var(--cloud);
 }
