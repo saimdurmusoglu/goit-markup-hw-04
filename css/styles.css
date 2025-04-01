@@ -263,14 +263,14 @@ main {
   color: var(--ocean);
 }
 
-.navbar-links:active {
+.navbar #nav-menu > .active > .navbar-links:focus {
   text-decoration: none;
   color: var(--ocean);
 }
 
-/* .navbar-links:hover::after, */
-.navbar-links:active::after {
+.navbar #nav-menu > .active > .navbar-links:focus::after {
   display: block;
+  color: var(--ocean);
 }
 
 /* address */
