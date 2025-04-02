@@ -120,9 +120,17 @@ body {
 /* section properties */
 .section {
   width: 100%;
-  min-width: 1440px;
+  max-width: 1440px;
+  margin: 0 auto;
   text-align: center;
   padding: 120px 0;
+}
+
+/* container properties */
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0;
 }
 
 /* buton properties */
@@ -159,13 +167,6 @@ button:hover {
   text-decoration: underline;
 }
 
-/* container properties */
-.container {
-  width: 1158px;
-  margin: 0 auto;
-  padding: 0 15px;
-}
-
 /* main properties */
 main {
   flex-grow: 1;
@@ -173,18 +174,17 @@ main {
 
 /* header properties */
 .page-header {
-  position: sticky;
+  position: fixed;
   top: 0;
   width: 100%;
-  min-width: 1440px;
+  max-width: 1440px;
   height: 72px;
-  margin-bottom: 0px;
   background-color: var(--white);
   border-bottom: 1px solid var(--cornflower);
-  box-shadow: 0 2px 5px var(--slate);
+  box-shadow: 0 10px 10px -10px var(--slate);
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-self: center;
   z-index: 1000;
 }
 
@@ -231,25 +231,6 @@ main {
   position: relative;
 }
 
-.navbar-links::after {
-  content: "";
-  position: absolute;
-  top: 44px;
-  left: 0;
-  width: 100%;
-  height: 4px;
-  background-color: var(--ocean);
-  border-radius: 2px;
-  display: none;
-  overflow: hidden;
-  font-size: 16px;
-  font-weight: var(--medium);
-  overflow: hidden;
-  transition-property: color;
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-}
-
 .navbar-links {
   text-decoration: none;
   color: var(--navy-blue);
@@ -263,14 +244,28 @@ main {
   color: var(--ocean);
 }
 
-.navbar #nav-menu > .active > .navbar-links:focus {
-  text-decoration: none;
-  color: var(--ocean);
+.active::after {
+  content: "";
+  position: absolute;
+  top: 44px;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background-color: var(--ocean);
+  border-radius: 2px;
+  display: block;
+  overflow: hidden;
 }
 
-.navbar #nav-menu > .active > .navbar-links:focus::after {
+.active {
   display: block;
   color: var(--ocean);
+  font-size: 16px;
+  font-weight: var(--medium);
+  overflow: hidden;
+  transition-property: color;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* address */
@@ -296,40 +291,27 @@ address a:hover {
 }
 
 /* hero */
-.hero::before {
-  position: absolute;
-  top: 0;
-  left: auto;
-  width: 100%;
-  max-width: 1440px;
+.hero {
+  position: relative;
   height: 600px;
-  content: "";
+  margin: 72px auto 0;
+  z-index: 100;
+  background-color: var(--navy-blue);
   background-image: url(../images/people-office.jpg);
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  z-index: 200;
-}
-
-.hero {
-  position: relative;
-  width: 100%;
-  max-width: 100%;
-  height: 600px;
-  margin: 0 auto;
-  z-index: 100;
-  background-color: var(--navy-blue);
-  background-position: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  text-align: center;
 }
 
 .hero::after {
   position: absolute;
   top: 0;
-  left: auto;
+  left: 0;
   width: 100%;
   max-width: 1440px;
   height: 600px;
@@ -337,7 +319,7 @@ address a:hover {
   background-color: var(--grey);
   background-position: center;
   opacity: 0.7;
-  z-index: 300;
+  z-index: 200;
 }
 
 .hero h1 {
@@ -347,21 +329,19 @@ address a:hover {
   padding: 0;
   margin-bottom: 40px;
   color: var(--white);
-  z-index: 400;
+  z-index: 300;
 }
 
 .hero button {
   position: relative;
   display: block;
-  z-index: 400;
+  z-index: 300;
   margin: 0 auto;
 }
 
 /* services */
 .services {
   position: relative;
-  left: 0;
-  top: 0;
   margin: 0 auto;
   background-color: var(--white);
   display: flex;
@@ -375,6 +355,7 @@ address a:hover {
 
 .services li {
   text-align: left;
+  width: 264px;
   padding: 8px 0;
 }
 
@@ -391,7 +372,7 @@ address a:hover {
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  width: 264px;
+  width: 100%;
   height: 112px;
   background-color: var(--cloud);
   border: 1px solid var(--light-slate);
@@ -411,8 +392,6 @@ address a:hover {
 /* team */
 .team {
   position: relative;
-  left: 0;
-  top: 0;
   margin: 0 auto;
   background-color: var(--cloud);
   display: flex;
@@ -530,8 +509,6 @@ address a:hover {
 /* portfolio */
 .portfolio {
   position: relative;
-  left: 0;
-  top: 0;
   background-color: var(--white);
   display: flex;
   justify-content: center;
@@ -643,23 +620,20 @@ address a:hover {
 /* footer */
 .page-footer {
   position: relative;
-  left: 0;
-  top: 0;
+  width: 100%;
+  max-width: 1440px;
   height: 312px;
-  padding: 100px auto;
   background-color: var(--navy-blue);
   margin-bottom: 0;
-  text-align: left;
-  display: flex;
+  align-self: center;
+  padding-left: 156px;
+  padding-top: 100px;
 }
 
 .page-footer .container {
   display: flex;
   gap: 120px;
   flex-direction: row;
-  justify-content: start;
-  align-items: start;
-  padding-top: 100px;
 }
 
 .page-footer .ft-logo {
