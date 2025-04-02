@@ -117,13 +117,16 @@ body {
   letter-spacing: 0.32px; /* %2 harf aralığı - 16px font büyüklüğü için 0.32px eder */
 }
 
+section {
+  padding: 120px 0;
+}
+
 /* section properties */
 .section {
   width: 100%;
   max-width: 1440px;
   margin: 0 auto;
   text-align: center;
-  padding: 120px 0;
 }
 
 /* container properties */
@@ -176,8 +179,6 @@ main {
 .page-header {
   position: fixed;
   top: 0;
-  width: 100%;
-  max-width: 1440px;
   height: 72px;
   background-color: var(--white);
   border-bottom: 1px solid var(--cornflower);
@@ -313,7 +314,6 @@ address a:hover {
   top: 0;
   left: 0;
   width: 100%;
-  max-width: 1440px;
   height: 600px;
   content: "";
   background-color: var(--grey);
@@ -621,12 +621,11 @@ address a:hover {
 .page-footer {
   position: relative;
   width: 100%;
-  max-width: 1440px;
   height: 312px;
   background-color: var(--navy-blue);
   margin-bottom: 0;
   align-self: center;
-  padding-left: 156px;
+  text-align: left;
   padding-top: 100px;
 }
 
@@ -642,6 +641,7 @@ address a:hover {
   justify-content: start;
   width: 264px;
   height: 112px;
+  margin-left: 156px;
 }
 
 .page-footer .ft-logo .footer-logo {
