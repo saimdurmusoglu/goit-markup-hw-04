@@ -124,7 +124,7 @@ section {
 /* section properties */
 .section {
   width: 100%;
-  max-width: 1440px;
+  /* max-width: 1440px; */
   margin: 0 auto;
   text-align: center;
 }
@@ -294,7 +294,7 @@ address a:hover {
 /* hero */
 .hero {
   position: relative;
-  height: 600px;
+  height: calc(100vh - 72px);
   margin: 72px auto 0;
   z-index: 100;
   background-color: var(--navy-blue);
@@ -314,7 +314,7 @@ address a:hover {
   top: 0;
   left: 0;
   width: 100%;
-  height: 600px;
+  height: calc(100vh - 72px);
   content: "";
   background-color: var(--grey);
   background-position: center;
